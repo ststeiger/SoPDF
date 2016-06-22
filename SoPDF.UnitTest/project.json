@@ -6,7 +6,7 @@
   "dependencies": {
     "dotnet-test-mstest": "1.0.1-preview",
     "MSTest.TestFramework": "1.0.0-preview",
-    "SoPDF.Common": "1.0.0-*"
+    "SoPDF": "1.0.0-*"
   },
 
   "frameworks": {
