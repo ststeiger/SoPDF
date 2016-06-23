@@ -14,13 +14,13 @@ namespace SoPDF.IO
         #region method
         internal void WriteHeader(PdfHeader header)
         {
-            GetBytes("PDF-" + PdfHeader.Version);
-            GetBytes(PdfHeader.BinaryComment);
+            WriteComment("PDF-" + PdfHeader.Version);
+            WriteComment(PdfHeader.BinaryComment);
         }
 
-        private byte[] GetBytes(string s)
+        private void WriteComment(string s)
         {
-            return Encoding.UTF8.GetBytes("%" + s + Environment.NewLine);
+            Write(Encoding.UTF8.GetBytes("%" + s + Environment.NewLine));
         }
         #endregion
     }

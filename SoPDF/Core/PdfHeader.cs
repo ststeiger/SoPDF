@@ -1,6 +1,3 @@
-using System;
-using System.IO;
-using System.Text;
 using SoPDF.IO.Interfaces;
 
 namespace SoPDF.Core
@@ -19,5 +16,10 @@ namespace SoPDF.Core
         /// to determine whether to treat the file’s contents as text or as binary 
         /// </summary>
         public const string BinaryComment = "©©©©";
+
+        public void Write()
+        {
+
+        }
     }
 }

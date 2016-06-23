@@ -7,19 +7,5 @@ namespace SoPDF.Core
 {
     public class PdfBody : IPdfElement
     {
-        public void Write(Stream output)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Write(Stream output, Encoding encoding)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Write(Stream output, Encoding encoding, bool leaveOpen)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
