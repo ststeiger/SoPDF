@@ -1,3 +1,6 @@
+using SoPDF.IO;
+using System.IO;
+
 namespace SoPDF.Core
 {
     public class PdfDocument
@@ -13,8 +16,9 @@ namespace SoPDF.Core
         #endregion
 
         #region constructor
-        public PdfDocument(string path)
+        public PdfDocument()
         {
+            Header = new PdfHeader();
         }
         #endregion
 
@@ -26,6 +30,12 @@ namespace SoPDF.Core
         //        randomNumberGenerator.GetBytes(ID);
         //    }
         //}
+
+        public void Write(string path)
+        {
+            PdfWriter pdfWriter = new PdfWriter(path);
+            pdfWriter.WriteHeader(Header);
+        }
         #endregion
     }
 }

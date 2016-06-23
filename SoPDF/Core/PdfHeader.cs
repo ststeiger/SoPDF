@@ -7,19 +7,17 @@ namespace SoPDF.Core
 {
     public class PdfHeader : IPdfElement
     {
-        public void Write(Stream output)
-        {
-            throw new NotImplementedException();
-        }
+        /// <summary>
+        /// Mandatory: indicate PDF version
+        /// </summary>
+        public const string Version = "1.7";
 
-        public void Write(Stream output, Encoding encoding)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Write(Stream output, Encoding encoding, bool leaveOpen)
-        {
-            throw new NotImplementedException();
-        }
+        /// <summary>
+        /// Optional: 
+        /// inculde this comment to ensure proper behaviour of file transfer applications
+        /// that inspect data near the beginning of a file
+        /// to determine whether to treat the file’s contents as text or as binary 
+        /// </summary>
+        public const string BinaryComment = "©©©©";
     }
 }

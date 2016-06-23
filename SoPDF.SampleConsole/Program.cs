@@ -17,9 +17,7 @@ namespace SoPDF.SampleConsole
 
         public static void Tester()
         {
-            Console.WriteLine($"Current Directory: {Directory.GetCurrentDirectory()}");
-            FileStream fileStream = new FileStream(Directory.GetCurrentDirectory() + "\\test.pdf", FileMode.Create, FileAccess.Write);
-            BinaryWriter streamWriter = new BinaryWriter(fileStream);
+            byte[] bytes = Encoding.UTF8.GetBytes("%PDF-1.7" + Environment.NewLine);
         }
     }
 }
