@@ -34,7 +34,7 @@ namespace SoPDF.Core
         public void Write(string path)
         {
             PdfWriter pdfWriter = new PdfWriter(path);
-            pdfWriter.Writer(Header);
+            pdfWriter.Write(Header);
         }
         #endregion
     }

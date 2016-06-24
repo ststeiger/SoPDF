@@ -1,13 +1,16 @@
+using SoPDF.IO;
 using SoPDF.IO.Interfaces;
+using System;
+using System.Text;
 
 namespace SoPDF.Core
 {
-    public class PdfHeader : IElement
+    public class PdfHeader : IElement, IWritable
     {
         /// <summary>
         /// Mandatory: indicate PDF version
         /// </summary>
-        public const string Version = "1.7";
+        public const double Version = 1.7;
 
         /// <summary>
         /// Optional: 
@@ -15,11 +18,11 @@ namespace SoPDF.Core
         /// that inspect data near the beginning of a file
         /// to determine whether to treat the file’s contents as text or as binary 
         /// </summary>
-        public const string BinaryComment = "©©©©";
+        public const string BinaryComment = "????";
 
-        public void Write()
+        public byte[] ToBytes()
         {
-
+            return Encoding.ASCII.GetBytes($"%PDF-{Version}{Environment.NewLine}%{BinaryComment}{Environment.NewLine}");
         }
     }
 }

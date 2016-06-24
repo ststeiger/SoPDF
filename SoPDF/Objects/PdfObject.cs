@@ -1,8 +1,9 @@
+using SoPDF.IO;
 using System.Text;
 
 namespace SoPDF.Objects
 {
-    public abstract class PdfObject
+    public abstract class PdfObject : IWritable
     {
         public bool IsIndirect { get; set; }
 
