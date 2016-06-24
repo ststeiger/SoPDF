@@ -8,7 +8,7 @@ namespace SoPDF.Objects
 
         public RealObject(double content)
         {
-            Content = content;
+            base.Content = content;
         }
 
         public override byte[] ToBytes()
