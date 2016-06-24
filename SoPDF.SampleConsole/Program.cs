@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SoPDF.SampleConsole
@@ -17,7 +18,24 @@ namespace SoPDF.SampleConsole
 
         public static void Tester()
         {
-            //byte[] bytes = Encoding.ASCII.GetBytes("%PDF-1.7" + Environment.NewLine);
+            string cureentDirectory = Directory.GetCurrentDirectory();
+            FileStream fileStream = new FileStream(Directory.GetCurrentDirectory() + @"\test.pdf", FileMode.Open, FileAccess.Read);
+            byte[] buffer = new byte[fileStream.Length];
+            fileStream.Read(buffer, 0, buffer.Length);
+
+            for (int i = 0; i < buffer.Length; i++)
+            {
+                byte b = buffer[i];
+                string output = Encoding.ASCII.GetString(new byte[1] { buffer[i] });
+                //Console.WriteLine($"{buffer[i]}\t\t{Encoding.ASCII.GetString(new byte[1] { buffer[i] })}");
+                Console.Write(Encoding.ASCII.GetString(new byte[1] { buffer[i] }));
+                //Thread.Sleep(100);
+            }
+
+            string content = Encoding.ASCII.GetString(buffer);
+            File.WriteAllBytes(Directory.GetCurrentDirectory() + @"\byte.txt", buffer);
+            File.WriteAllText(Directory.GetCurrentDirectory() + @"\string.txt", content);
+            //Console.WriteLine(content);
         }
     }
 }

@@ -243,3 +243,6 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/SoPDF.SampleConsole/byte.txt
+/SoPDF.SampleConsole/string.txt
+/SoPDF.SampleConsole/test.pdf
