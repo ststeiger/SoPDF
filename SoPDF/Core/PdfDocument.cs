@@ -1,11 +1,11 @@
-using SoPDF.IO;
-using System.IO;
-
 namespace SoPDF.Core
 {
     public class PdfDocument
     {
-        #region property
+        public byte[] ID { get; set; } = new byte[16];
+
+        public string Path { get; set; }
+
         public PdfHeader Header { get; set; }
 
         public PdfBody Body { get; set; }
@@ -13,16 +13,12 @@ namespace SoPDF.Core
         public PdfXREF XREF { get; set; }
 
         public PdfTrailer Trailer { get; set; }
-        #endregion
 
-        #region constructor
         public PdfDocument()
         {
             Header = new PdfHeader();
         }
-        #endregion
 
-        #region method
         //private void GenerateID()
         //{
         //    using (RandomNumberGenerator randomNumberGenerator = RandomNumberGenerator.Create())
@@ -30,12 +26,5 @@ namespace SoPDF.Core
         //        randomNumberGenerator.GetBytes(ID);
         //    }
         //}
-
-        public void Write(string path)
-        {
-            PdfWriter pdfWriter = new PdfWriter(path);
-            pdfWriter.Write(Header);
-        }
-        #endregion
     }
 }
