@@ -17,7 +17,7 @@ namespace SoPDF.SampleConsole
 
         public static void Tester()
         {
-            byte[] bytes = Encoding.UTF8.GetBytes("%PDF-1.7" + Environment.NewLine);
+            byte[] bytes = Encoding.ASCII.GetBytes("%PDF-1.7" + Environment.NewLine);
         }
     }
 }

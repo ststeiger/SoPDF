@@ -20,7 +20,7 @@ namespace SoPDF.IO
 
         private void WriteComment(string s)
         {
-            Write(Encoding.UTF8.GetBytes("%" + s + Environment.NewLine));
+            Write(Encoding.ASCII.GetBytes("%" + s + Environment.NewLine));
         }
         #endregion
     }

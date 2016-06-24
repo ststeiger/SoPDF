@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SoPDF.Objects;
 
 namespace SoPDF.UnitTest
 {
@@ -6,23 +7,8 @@ namespace SoPDF.UnitTest
     public class TestClass
     {
         [TestMethod]
-        public void TestMethodPassing()
+        public void TestToBytes()
         {
-            Assert.IsTrue(true);
         }
-
-        [TestMethod]
-        public void TestMethodFailing()
-        {
-            Assert.IsTrue(false);
-        }
-
-        [TestMethod]
-        public void TestStringEqual()
-        {
-            var pdfName = "myPDF";
-            Assert.AreEqual(pdfName, "myPDF");
-        }
-
     }
 }

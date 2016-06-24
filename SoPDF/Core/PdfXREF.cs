@@ -5,7 +5,7 @@ using SoPDF.IO.Interfaces;
 
 namespace SoPDF.Core
 {
-    public class PdfXREF : IPdfElement
+    public class PdfXREF : IElement
     {
         public void Write(Stream output)
         {

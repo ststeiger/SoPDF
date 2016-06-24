@@ -2,7 +2,7 @@ using SoPDF.IO.Interfaces;
 
 namespace SoPDF.Core
 {
-    public class PdfHeader : IPdfElement
+    public class PdfHeader : IElement
     {
         /// <summary>
         /// Mandatory: indicate PDF version

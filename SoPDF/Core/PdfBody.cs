@@ -5,7 +5,7 @@ using SoPDF.IO.Interfaces;
 
 namespace SoPDF.Core
 {
-    public class PdfBody : IPdfElement
+    public class PdfBody : IElement
     {
     }
 }

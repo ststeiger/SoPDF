@@ -5,7 +5,7 @@ using SoPDF.IO.Interfaces;
 
 namespace SoPDF.Core
 {
-    public class PdfTrailer : IPdfElement
+    public class PdfTrailer : IElement
     {
         public void Write(Stream output)
         {
