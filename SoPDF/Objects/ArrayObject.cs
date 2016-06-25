@@ -1,4 +1,4 @@
-using SoPDF.IO;
+using SoPDF.Core;
 using System;
 using System.Collections.Generic;
 

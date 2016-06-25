@@ -1,7 +1,7 @@
 using System.IO;
 using System.Text;
 
-namespace SoPDF.IO
+namespace SoPDF.Core
 {
     internal class PdfWriter : BinaryWriter
     {

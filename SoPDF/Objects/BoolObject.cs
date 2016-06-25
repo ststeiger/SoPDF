@@ -1,4 +1,4 @@
-using SoPDF.IO;
+using SoPDF.Core;
 
 namespace SoPDF.Objects
 {

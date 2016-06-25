@@ -17,6 +17,9 @@ namespace SoPDF.Core
         public PdfDocument()
         {
             Header = new PdfHeader();
+            Body = new PdfBody();
+            XREF = new PdfXREF();
+            Trailer = new PdfTrailer();
         }
 
         //private void GenerateID()

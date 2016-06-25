@@ -1,5 +1,4 @@
-using SoPDF.IO;
-using System.Text;
+using SoPDF.Core;
 
 namespace SoPDF.Objects
 {

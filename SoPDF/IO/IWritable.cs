@@ -1,4 +1,4 @@
-namespace SoPDF.IO
+namespace SoPDF.Core
 {
     interface IWritable
     {

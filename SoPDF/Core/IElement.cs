@@ -1,4 +1,4 @@
-namespace SoPDF.IO.Interfaces
+namespace SoPDF.Core
 {
     interface IElement
     {

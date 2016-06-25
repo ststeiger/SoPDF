@@ -1,11 +1,20 @@
 using System;
-using System.IO;
-using System.Text;
-using SoPDF.IO.Interfaces;
+using SoPDF.Objects;
 
 namespace SoPDF.Core
 {
-    public class PdfBody : IElement
+    public class PdfBody : IElement, IWritable
     {
+        public DictionaryObject Content { get; set; }
+        
+        public PdfBody()
+        {
+            
+        }
+
+        byte[] IWritable.ToBytes()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

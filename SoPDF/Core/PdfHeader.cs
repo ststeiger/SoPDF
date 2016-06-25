@@ -1,9 +1,4 @@
-﻿using SoPDF.IO;
-using SoPDF.IO.Interfaces;
-using System;
-using System.Text;
-
-namespace SoPDF.Core
+﻿namespace SoPDF.Core
 {
     public class PdfHeader : IElement, IWritable
     {
