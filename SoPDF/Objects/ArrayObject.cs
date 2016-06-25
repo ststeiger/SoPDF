@@ -1,6 +1,6 @@
+using SoPDF.IO;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace SoPDF.Objects
 {
@@ -29,19 +29,19 @@ namespace SoPDF.Objects
 
                 foreach (PdfObject obj in content)
                 {
-                    output.AddRange(Encoding.ASCII.GetBytes(" "));
+                    output.AddRange(PdfWriter.PdfEncoding.GetBytes(" "));
                     output.AddRange(obj.ToBytes());
                 }
 
                 output.Remove(0);
-                output.InsertRange(0, Encoding.ASCII.GetBytes("["));
-                output.AddRange(Encoding.ASCII.GetBytes("]"));
+                output.InsertRange(0, PdfWriter.PdfEncoding.GetBytes("["));
+                output.AddRange(PdfWriter.PdfEncoding.GetBytes("]"));
 
                 return output.ToArray();
             }
             else
             {
-                return Encoding.ASCII.GetBytes("[]");
+                return PdfWriter.PdfEncoding.GetBytes("[]");
             }
         }
     }

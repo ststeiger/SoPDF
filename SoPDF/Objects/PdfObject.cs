@@ -11,7 +11,7 @@ namespace SoPDF.Objects
 
         public virtual byte[] ToBytes()
         {
-            return Encoding.ASCII.GetBytes(Content.ToString());
+            return PdfWriter.PdfEncoding.GetBytes(Content.ToString());
         }
     }
 }

@@ -1,5 +1,5 @@
+using SoPDF.IO;
 using System;
-using System.Text;
 
 namespace SoPDF.Objects
 {
@@ -22,7 +22,7 @@ namespace SoPDF.Objects
         public override byte[] ToBytes()
         {
             string content = base.Content.ToString();
-            return Encoding.ASCII.GetBytes($"({content})");
+            return PdfWriter.PdfEncoding.GetBytes($"({content})");
         }
     }
 }

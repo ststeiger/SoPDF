@@ -1,7 +1,7 @@
+using SoPDF.IO;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace SoPDF.Objects
 {
@@ -27,14 +27,14 @@ namespace SoPDF.Objects
             List<byte> output = new List<byte>();
             output.AddRange(Dictionary.ToBytes());
 
-            output.AddRange(Encoding.ASCII.GetBytes("stream\n"));
+            output.AddRange(PdfWriter.PdfEncoding.GetBytes("stream\n"));
 
             Stream content = base.Content as Stream;
             byte[] buffer = new byte[content.Length];
             content.Read(buffer, 0, buffer.Length);
             output.AddRange(buffer);
 
-            output.AddRange(Encoding.ASCII.GetBytes("endstream"));
+            output.AddRange(PdfWriter.PdfEncoding.GetBytes("endstream"));
 
             return output.ToArray();
         }

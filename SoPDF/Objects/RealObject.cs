@@ -1,4 +1,4 @@
-using System.Text;
+using SoPDF.IO;
 
 namespace SoPDF.Objects
 {
@@ -14,7 +14,7 @@ namespace SoPDF.Objects
         public override byte[] ToBytes()
         {
             double content = double.Parse(base.Content.ToString());
-            return Encoding.ASCII.GetBytes(content.ToString());
+            return PdfWriter.PdfEncoding.GetBytes(content.ToString());
         }
     }
 }
