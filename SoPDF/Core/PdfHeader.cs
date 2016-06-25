@@ -1,4 +1,4 @@
-using SoPDF.IO;
+﻿using SoPDF.IO;
 using SoPDF.IO.Interfaces;
 using System;
 using System.Text;
@@ -16,9 +16,9 @@ namespace SoPDF.Core
         /// Optional: 
         /// inculde this comment to ensure proper behaviour of file transfer applications
         /// that inspect data near the beginning of a file
-        /// to determine whether to treat the file�s contents as text or as binary 
+        /// to determine whether to treat the file's contents as text or as binary 
         /// </summary>
-        public const string BinaryComment = "????";
+        public const string BinaryComment = "µµµµ";
 
         public byte[] ToBytes()
         {
