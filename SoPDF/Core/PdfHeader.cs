@@ -22,7 +22,7 @@ namespace SoPDF.Core
 
         public byte[] ToBytes()
         {
-            return Encoding.ASCII.GetBytes($"%PDF-{Version}{Environment.NewLine}%{BinaryComment}{Environment.NewLine}");
+            return Encoding.ASCII.GetBytes($"%PDF-{Version}\n%{BinaryComment}\n");
         }
     }
 }
