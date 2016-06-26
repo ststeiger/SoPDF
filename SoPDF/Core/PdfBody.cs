@@ -12,7 +12,7 @@ namespace SoPDF.Core
             
         }
 
-        byte[] IWritable.ToBytes()
+        public byte[] ToBytes()
         {
             throw new NotImplementedException();
         }

@@ -39,7 +39,7 @@ namespace SoPDF.Objects
 
             set
             {
-                if (value!=null)
+                if (value != null)
                 {
                     if (ContainsKey(key))
                     {
@@ -98,9 +98,9 @@ namespace SoPDF.Objects
 
         public void Add(KeyValuePair<NameObject, PdfObject> item)
         {
-            if (item.Key!=null && item.Value!=null)
+            if (item.Key != null && item.Value != null)
             {
-                _items.Add(new DictionaryEntry(item.Key,item.Value));
+                _items.Add(new DictionaryEntry(item.Key, item.Value));
             }
             else
             {
@@ -110,9 +110,9 @@ namespace SoPDF.Objects
 
         public void Add(NameObject key, PdfObject value)
         {
-            if (key!=null && value!=null)
+            if (key != null && value != null)
             {
-                _items.Add(new DictionaryEntry(key,value));
+                _items.Add(new DictionaryEntry(key, value));
             }
             else
             {
@@ -127,7 +127,7 @@ namespace SoPDF.Objects
 
         public bool Contains(KeyValuePair<NameObject, PdfObject> item)
         {
-            return _items.Contains(new DictionaryEntry(item.Key,item.Value));
+            return _items.Contains(new DictionaryEntry(item.Key, item.Value));
         }
 
         public bool ContainsKey(NameObject key)
@@ -152,9 +152,9 @@ namespace SoPDF.Objects
 
         public bool Remove(NameObject key)
         {
-            if(_items.Any(i=>i.Key==key))
+            if (_items.Any(i => i.Key == key))
             {
-                return _items.Remove(_items.Single(i=>i.Key==key));
+                return _items.Remove(_items.Single(i => i.Key == key));
             }
             else
             {
@@ -194,7 +194,7 @@ namespace SoPDF.Objects
         public bool TryGetValue(NameObject key, out PdfObject value)
         {
             value = this[key];
-            
+
             if (value != null)
             {
                 return true;
@@ -209,7 +209,7 @@ namespace SoPDF.Objects
         {
             for (int i = 0; i < arrayIndex; i++)
             {
-                array[i] =new KeyValuePair<NameObject,PdfObject>( _items[i].Key as NameObject, _items[i].Value as PdfObject);
+                array[i] = new KeyValuePair<NameObject, PdfObject>(_items[i].Key as NameObject, _items[i].Value as PdfObject);
             }
         }
 
