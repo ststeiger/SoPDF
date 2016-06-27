@@ -14,8 +14,7 @@ namespace SoPDF.Core
 
         private void InitialCatalog()
         {
-            DocumentCatalog = new PdfDocumentCatalog();
-            DocumentCatalog.Add(new NameObject("Type"), new NameObject("Catalog"));
+            DocumentCatalog = new PdfDocumentCatalog(); 
         }
 
         public byte[] ToBytes()

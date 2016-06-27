@@ -8,6 +8,8 @@ namespace SoPDF.Objects
 
         public object Content { get; set; }
 
+        public string Position { get; set; }
+
         public virtual byte[] ToBytes()
         {
             return PdfWriter.PdfEncoding.GetBytes(Content.ToString());
