@@ -9,7 +9,7 @@ namespace SoPDF.Core
 
         internal PdfBody()
         {
-
+            
         }
 
         private void InitialCatalog()
