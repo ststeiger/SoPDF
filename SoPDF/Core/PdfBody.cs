@@ -1,15 +1,21 @@
-using System;
 using SoPDF.Objects;
+using System;
 
 namespace SoPDF.Core
 {
-    public class PdfBody : IElement, IWritable
+    internal class PdfBody : IElement, IWritable
     {
-        public DictionaryObject Content { get; set; }
-        
-        public PdfBody()
+        private PdfDocumentCatalog DocumentCatalog { get; set; }
+
+        internal PdfBody()
         {
-            
+
+        }
+
+        private void InitialCatalog()
+        {
+            DocumentCatalog = new PdfDocumentCatalog();
+            DocumentCatalog.Add(new NameObject("Type"), new NameObject("Catalog"));
         }
 
         public byte[] ToBytes()

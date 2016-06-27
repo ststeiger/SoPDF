@@ -1,11 +1,11 @@
 ﻿namespace SoPDF.Core
 {
-    public class PdfHeader : IElement, IWritable
+    internal class PdfHeader : IElement, IWritable
     {
         /// <summary>
         /// Mandatory: indicate PDF version
         /// </summary>
-        public const double Version = 1.7;
+        private const double Version = 1.7;
 
         /// <summary>
         /// Optional: 
@@ -13,7 +13,7 @@
         /// that inspect data near the beginning of a file
         /// to determine whether to treat the file's contents as text or as binary 
         /// </summary>
-        public const string BinaryComment = "µµµµ";
+        private const string BinaryComment = "µµµµ";
 
         public byte[] ToBytes()
         {

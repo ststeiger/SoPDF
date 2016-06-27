@@ -8,26 +8,12 @@ namespace SoPDF.Objects
 {
     public class DictionaryObject : PdfObject, IDictionary<NameObject, PdfObject>
     {
-        //public Dictionary<string, PdfObject> Content { get; set; }
-
         // The array of items
         private List<DictionaryEntry> _items;
 
         public DictionaryObject()
         {
             _items = new List<DictionaryEntry>();
-        }
-
-        public DictionaryObject(Dictionary<string, PdfObject> content)
-        {
-            if (content == null)
-            {
-                throw new NullReferenceException();
-            }
-            else
-            {
-                base.Content = content;
-            }
         }
 
         public PdfObject this[NameObject key]
@@ -164,30 +150,25 @@ namespace SoPDF.Objects
 
         public override byte[] ToBytes()
         {
-            Dictionary<string, PdfObject> content = base.Content as Dictionary<string, PdfObject>;
-
-            if (content.Count > 0)
+            if (_items.Count > 0)
             {
                 List<byte> output = new List<byte>();
 
-                foreach (KeyValuePair<string, PdfObject> obj in content)
+                output.AddRange(PdfWriter.PdfEncoding.GetBytes("<<"));
+                foreach (DictionaryEntry entry in _items)
                 {
-                    output.AddRange(PdfWriter.PdfEncoding.GetBytes("   "));
-                    output.AddRange(new NameObject(obj.Key).ToBytes());
+                    output.AddRange((entry.Key as NameObject).ToBytes());
                     output.AddRange(PdfWriter.PdfEncoding.GetBytes(" "));
-                    output.AddRange(obj.Value.ToBytes());
-                    output.AddRange(PdfWriter.PdfEncoding.GetBytes("\n"));
+                    output.AddRange((entry.Value as PdfObject).ToBytes());
+                    output.AddRange(PdfWriter.PdfEncoding.GetBytes(" "));
                 }
-
-                output.RemoveRange(0, 2);
-                output.InsertRange(0, PdfWriter.PdfEncoding.GetBytes("<<"));
                 output.AddRange(PdfWriter.PdfEncoding.GetBytes(">>"));
 
                 return output.ToArray();
             }
             else
             {
-                return PdfWriter.PdfEncoding.GetBytes("<<>>");
+                throw new IndexOutOfRangeException();
             }
         }
 

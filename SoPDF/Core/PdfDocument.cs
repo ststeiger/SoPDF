@@ -6,13 +6,13 @@ namespace SoPDF.Core
 
         public string Path { get; set; }
 
-        public PdfHeader Header { get; set; }
+        private PdfHeader Header { get; set; }
 
-        public PdfBody Body { get; set; }
+        private PdfBody Body { get; set; }
 
-        public PdfXREF XREF { get; set; }
+        private PdfXREF XREF { get; set; }
 
-        public PdfTrailer Trailer { get; set; }
+        private PdfTrailer Trailer { get; set; }
 
         public PdfDocument()
         {

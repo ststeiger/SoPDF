@@ -1,6 +1,6 @@
 namespace SoPDF.Core
 {
-    public class PdfXREF : IElement
+    internal class PdfXREF : IElement
     {
 
     }

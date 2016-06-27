@@ -8,17 +8,34 @@ namespace SoPDF.Objects
     {
         public static byte[] ToBytes(this PdfObject[] array)
         {
-            List<byte> output = new List<byte>();
-            output.AddRange(PdfWriter.PdfEncoding.GetBytes("["));
-            for (int i = 0; i < array.Length - 1; i++)
+            if (array != null)
             {
-                output.AddRange(array[i].ToBytes());
-                output.AddRange(PdfWriter.PdfEncoding.GetBytes(" "));
-            }
-            output.AddRange(array[array.Length - 1].ToBytes());
-            output.AddRange(PdfWriter.PdfEncoding.GetBytes("]"));
+                if (array.Length > 0)
+                {
+                    List<byte> output = new List<byte>();
 
-            return output.ToArray();
+                    output.AddRange(PdfWriter.PdfEncoding.GetBytes("["));
+                    foreach (PdfObject obj in array)
+                    {
+                        if (obj != null)
+                        {
+                            output.AddRange(obj.ToBytes());
+                            output.AddRange(PdfWriter.PdfEncoding.GetBytes(" "));
+                        }
+                    }
+                    output.AddRange(PdfWriter.PdfEncoding.GetBytes("]"));
+
+                    return output.ToArray();
+                }
+                else
+                {
+                    throw new IndexOutOfRangeException();
+                }
+            }
+            else
+            {
+                throw new NullReferenceException();
+            }
         }
     }
 
