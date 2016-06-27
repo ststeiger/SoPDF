@@ -8,6 +8,7 @@ namespace SoPDF.Objects
 {
     public class DictionaryObject : PdfObject, IDictionary<NameObject, PdfObject>
     {
+        #region IDictionary
         // The array of items
         private List<DictionaryEntry> _items;
 
@@ -148,30 +149,6 @@ namespace SoPDF.Objects
             }
         }
 
-        public override byte[] ToBytes()
-        {
-            if (_items.Count > 0)
-            {
-                List<byte> output = new List<byte>();
-
-                output.AddRange(PdfWriter.PdfEncoding.GetBytes("<<"));
-                foreach (DictionaryEntry entry in _items)
-                {
-                    output.AddRange((entry.Key as NameObject).ToBytes());
-                    output.AddRange(PdfWriter.PdfEncoding.GetBytes(" "));
-                    output.AddRange((entry.Value as PdfObject).ToBytes());
-                    output.AddRange(PdfWriter.PdfEncoding.GetBytes(" "));
-                }
-                output.AddRange(PdfWriter.PdfEncoding.GetBytes(">>"));
-
-                return output.ToArray();
-            }
-            else
-            {
-                throw new IndexOutOfRangeException();
-            }
-        }
-
         public bool TryGetValue(NameObject key, out PdfObject value)
         {
             value = this[key];
@@ -197,6 +174,31 @@ namespace SoPDF.Objects
         IEnumerator IEnumerable.GetEnumerator()
         {
             return _items.GetEnumerator();
+        }
+        #endregion
+
+        public override byte[] ToBytes()
+        {
+            if (_items.Count > 0)
+            {
+                List<byte> output = new List<byte>();
+
+                output.AddRange(PdfWriter.PdfEncoding.GetBytes("<<"));
+                foreach (DictionaryEntry entry in _items)
+                {
+                    output.AddRange((entry.Key as NameObject).ToBytes());
+                    output.AddRange(PdfWriter.PdfEncoding.GetBytes(" "));
+                    output.AddRange((entry.Value as PdfObject).ToBytes());
+                    output.AddRange(PdfWriter.PdfEncoding.GetBytes(" "));
+                }
+                output.AddRange(PdfWriter.PdfEncoding.GetBytes(">>"));
+
+                return output.ToArray();
+            }
+            else
+            {
+                throw new IndexOutOfRangeException();
+            }
         }
     }
 }
