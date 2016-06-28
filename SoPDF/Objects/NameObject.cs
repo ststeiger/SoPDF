@@ -19,7 +19,7 @@ namespace SoPDF.Objects
             }
         }
 
-        public override byte[] ToBytes()
+        public override byte[] ToBytes(bool isReference = false)
         {
             string content = base.Content.ToString();
             return PdfWriter.PdfEncoding.GetBytes($"/{content.Replace("#", "#23")}");
