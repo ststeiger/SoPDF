@@ -3,7 +3,7 @@ using System;
 
 namespace SoPDF.Core
 {
-    internal class PdfBody : IElement, IWritable
+    internal class PdfBody : IWritable
     {
         private PdfDocumentCatalog DocumentCatalog { get; set; }
 
