@@ -2,6 +2,6 @@ namespace SoPDF.Core
 {
     interface IWritable
     {
-        byte[] ToBytes();
+        byte[] ToBytes(bool isReference = false);
     }
 }
