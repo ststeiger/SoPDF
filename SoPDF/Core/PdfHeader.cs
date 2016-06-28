@@ -15,7 +15,7 @@
         /// </summary>
         private const string BinaryComment = "µµµµ";
 
-        public byte[] ToBytes()
+        public byte[] ToBytes(bool isReference = false)
         {
             return PdfWriter.PdfEncoding.GetBytes($"%PDF-{Version}\n%{BinaryComment}\n");
         }
