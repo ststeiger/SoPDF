@@ -11,7 +11,7 @@ namespace SoPDF.Objects
             base.Content = content;
         }
 
-        public override byte[] ToBytes()
+        public override byte[] ToBytes(bool isReference = false)
         {
             double content = double.Parse(base.Content.ToString());
             return PdfWriter.PdfEncoding.GetBytes(content.ToString());
