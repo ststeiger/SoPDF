@@ -10,7 +10,7 @@ namespace SoPDF.Objects
 
         public string Position { get; set; }
 
-        public virtual byte[] ToBytes()
+        public virtual byte[] ToBytes(bool isReference = fasle)
         {
             return PdfWriter.PdfEncoding.GetBytes(Content.ToString());
         }
