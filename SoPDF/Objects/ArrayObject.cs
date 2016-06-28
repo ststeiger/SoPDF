@@ -55,7 +55,7 @@ namespace SoPDF.Objects
             }
         }
 
-        public override byte[] ToBytes()
+        public override byte[] ToBytes(bool isReference = false)
         {
             if (base.Content != null)
             {
