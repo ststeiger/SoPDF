@@ -1,6 +1,6 @@
 namespace SoPDF.Core
 {
-    internal class PdfTrailer : IElement
+    internal class PdfTrailer
     {
     }
 }
