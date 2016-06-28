@@ -177,7 +177,7 @@ namespace SoPDF.Objects
         }
         #endregion
 
-        public override byte[] ToBytes()
+        public override byte[] ToBytes(bool isReference = false)
         {
             if (_items.Count > 0)
             {
