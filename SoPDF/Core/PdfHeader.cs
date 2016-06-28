@@ -1,6 +1,6 @@
 ﻿namespace SoPDF.Core
 {
-    internal class PdfHeader : IElement, IWritable
+    internal class PdfHeader : IWritable
     {
         /// <summary>
         /// Mandatory: indicate PDF version
