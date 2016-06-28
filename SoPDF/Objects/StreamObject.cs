@@ -22,7 +22,7 @@ namespace SoPDF.Objects
             }
         }
 
-        public override byte[] ToBytes()
+        public override byte[] ToBytes(bool isReference = false)
         {
             List<byte> output = new List<byte>();
             output.AddRange(Dictionary.ToBytes());
