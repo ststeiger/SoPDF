@@ -17,7 +17,7 @@ namespace SoPDF.Core
             DocumentCatalog = new PdfDocumentCatalog(); 
         }
 
-        public byte[] ToBytes()
+        public byte[] ToBytes(bool isReference = false)
         {
             throw new NotImplementedException();
         }
