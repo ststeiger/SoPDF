@@ -1,7 +1,4 @@
 # Customize ignored files
-/SoPDF.SampleConsole/byte.txt
-/SoPDF.SampleConsole/string.txt
-/SoPDF.SampleConsole/test.pdf
 /.vscode
 
 ## Ignore Visual Studio temporary files, build results, and
