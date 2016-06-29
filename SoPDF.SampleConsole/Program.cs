@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SoPDF.Core;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,7 +13,14 @@ namespace SoPDF.SampleConsole
     {
         public static void Main(string[] args)
         {
-            Tester();
+            //Tester();
+            Console.WriteLine("Hello World");
+
+            PdfDocument doc = new PdfDocument();
+            PdfWriter writer = new PdfWriter(@"D:\test.pdf");
+            writer.Write(doc);
+            writer.Flush();
+            writer.Dispose();
             Console.ReadKey();
         }
 

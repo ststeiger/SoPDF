@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace SoPDF.Objects
 {
-    public class DictionaryObject : PdfObject, IDictionary<NameObject, PdfObject>
+    public class DictionaryObject : PdfObject, IDictionary<string, PdfObject>
     {
         #region IDictionary
         // The array of items
@@ -17,11 +17,11 @@ namespace SoPDF.Objects
             _items = new List<DictionaryEntry>();
         }
 
-        public PdfObject this[NameObject key]
+        public PdfObject this[string key]
         {
             get
             {
-                return _items.Single(i => i.Key == key).Value as PdfObject;
+                return _items.Single(i => i.Key.ToString() == key).Value as PdfObject;
             }
 
             set
@@ -57,16 +57,16 @@ namespace SoPDF.Objects
             }
         }
 
-        public ICollection<NameObject> Keys
+        public ICollection<string> Keys
         {
             get
             {
-                List<NameObject> nameObjects = new List<NameObject>();
+                List<string> keys = new List<string>();
                 foreach (DictionaryEntry entry in _items)
                 {
-                    nameObjects.Add(entry.Key as NameObject);
+                    keys.Add(entry.Key.ToString());
                 }
-                return nameObjects;
+                return keys;
             }
         }
 
@@ -83,9 +83,9 @@ namespace SoPDF.Objects
             }
         }
 
-        public void Add(KeyValuePair<NameObject, PdfObject> item)
+        public void Add(KeyValuePair<string, PdfObject> item)
         {
-            if (item.Key != null && item.Value != null)
+            if (!string.IsNullOrEmpty(item.Key) && item.Value != null)
             {
                 _items.Add(new DictionaryEntry(item.Key, item.Value));
             }
@@ -95,9 +95,9 @@ namespace SoPDF.Objects
             }
         }
 
-        public void Add(NameObject key, PdfObject value)
+        public void Add(string key, PdfObject value)
         {
-            if (key != null && value != null)
+            if (!string.IsNullOrEmpty(key) && value != null)
             {
                 _items.Add(new DictionaryEntry(key, value));
             }
@@ -112,36 +112,36 @@ namespace SoPDF.Objects
             _items.Clear();
         }
 
-        public bool Contains(KeyValuePair<NameObject, PdfObject> item)
+        public bool Contains(KeyValuePair<string, PdfObject> item)
         {
             return _items.Contains(new DictionaryEntry(item.Key, item.Value));
         }
 
-        public bool ContainsKey(NameObject key)
+        public bool ContainsKey(string key)
         {
-            return _items.Exists(i => i.Key == key);
+            return _items.Exists(i => i.Key.ToString() == key);
         }
 
-        public IEnumerator<KeyValuePair<NameObject, PdfObject>> GetEnumerator()
+        public IEnumerator<KeyValuePair<string, PdfObject>> GetEnumerator()
         {
-            List<KeyValuePair<NameObject, PdfObject>> keyValuePairs = new List<KeyValuePair<NameObject, PdfObject>>();
+            List<KeyValuePair<string, PdfObject>> keyValuePairs = new List<KeyValuePair<string, PdfObject>>();
             foreach (DictionaryEntry entry in _items)
             {
-                keyValuePairs.Add(new KeyValuePair<NameObject, PdfObject>(entry.Key as NameObject, entry.Value as PdfObject));
+                keyValuePairs.Add(new KeyValuePair<string, PdfObject>(entry.Key.ToString(), entry.Value as PdfObject));
             }
             return keyValuePairs.GetEnumerator();
         }
 
-        public bool Remove(KeyValuePair<NameObject, PdfObject> item)
+        public bool Remove(KeyValuePair<string, PdfObject> item)
         {
             return _items.Remove(new DictionaryEntry(item.Key, item.Value));
         }
 
-        public bool Remove(NameObject key)
+        public bool Remove(string key)
         {
-            if (_items.Any(i => i.Key == key))
+            if (_items.Any(i => i.Key.ToString() == key))
             {
-                return _items.Remove(_items.Single(i => i.Key == key));
+                return _items.Remove(_items.Single(i => i.Key.ToString() == key));
             }
             else
             {
@@ -149,25 +149,32 @@ namespace SoPDF.Objects
             }
         }
 
-        public bool TryGetValue(NameObject key, out PdfObject value)
+        public bool TryGetValue(string key, out PdfObject value)
         {
-            value = this[key];
-
-            if (value != null)
+            if (!string.IsNullOrEmpty(key))
             {
-                return true;
+                value = this[key];
+
+                if (value != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {
-                return false;
+                throw new NullReferenceException();
             }
         }
 
-        void ICollection<KeyValuePair<NameObject, PdfObject>>.CopyTo(KeyValuePair<NameObject, PdfObject>[] array, int arrayIndex)
+        void ICollection<KeyValuePair<string, PdfObject>>.CopyTo(KeyValuePair<string, PdfObject>[] array, int arrayIndex)
         {
             for (int i = 0; i < arrayIndex; i++)
             {
-                array[i] = new KeyValuePair<NameObject, PdfObject>(_items[i].Key as NameObject, _items[i].Value as PdfObject);
+                array[i] = new KeyValuePair<string, PdfObject>(_items[i].Key.ToString(), _items[i].Value as PdfObject);
             }
         }
 
@@ -186,7 +193,7 @@ namespace SoPDF.Objects
                 output.AddRange(PdfWriter.PdfEncoding.GetBytes("<<"));
                 foreach (DictionaryEntry entry in _items)
                 {
-                    output.AddRange((entry.Key as NameObject).ToBytes());
+                    output.AddRange((new NameObject(entry.Key.ToString())).ToBytes());
                     output.AddRange(PdfWriter.PdfEncoding.GetBytes(" "));
                     output.AddRange((entry.Value as PdfObject).ToBytes());
                     output.AddRange(PdfWriter.PdfEncoding.GetBytes(" "));

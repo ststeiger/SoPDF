@@ -1,25 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace SoPDF.Core
 {
-    public class PdfDocument
+    public class PdfDocument : IWritable
     {
         public byte[] ID { get; set; } = new byte[16];
 
         public string Path { get; set; }
 
-        private PdfHeader Header { get; set; }
+        private Header Header { get; set; }
 
-        private PdfBody Body { get; set; }
-
-        private PdfXREF XREF { get; set; }
-
-        private PdfTrailer Trailer { get; set; }
+        private Trailer Trailer { get; set; }
 
         public PdfDocument()
         {
-            Header = new PdfHeader();
-            Body = new PdfBody();
-            XREF = new PdfXREF();
-            Trailer = new PdfTrailer();
+            Header = new Header();
+            Trailer = new Trailer();
+        }
+
+        public byte[] ToBytes(bool isReference = false)
+        {
+            List<byte> output = new List<byte>();
+
+            output.AddRange(Header.ToBytes().ToList());
+            output.AddRange(Trailer.ToBytes().ToList());
+
+            return output.ToArray();
         }
 
         //private void GenerateID()

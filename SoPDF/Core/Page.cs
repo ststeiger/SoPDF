@@ -2,7 +2,7 @@ using SoPDF.Objects;
 
 namespace SoPDF.Core
 {
-    internal class PdfPage : DictionaryObject
+    internal class Page : DictionaryObject
     {
 
     }
