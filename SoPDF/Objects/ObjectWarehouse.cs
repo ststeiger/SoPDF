@@ -1,8 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SoPDF.Objects
 {
@@ -30,6 +26,17 @@ namespace SoPDF.Objects
             }
 
             return objects;
+        }
+
+        public byte[] ToBytes()
+        {
+            List<byte> output = new List<byte>();
+            foreach (PdfObject item in objects)
+            {
+                output.AddRange(item.ToBytes());
+            }
+
+            return output.ToArray();
         }
     }
 }
