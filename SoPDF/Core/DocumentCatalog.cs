@@ -16,10 +16,16 @@ namespace SoPDF.Core
             this["Pages"] = new PageTree();
         }
 
-        internal void AddPage()
+        internal void CreatePage()
         {
             PageTree pageTree = this["Pages"] as PageTree;
+
+            Page page = new Page();
+            
+            ObjectWarehouse.GetWareHouse().Add(page);
+
             pageTree.Pages.Add(new Page());
+
         }
     }
 }

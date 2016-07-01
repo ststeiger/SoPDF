@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using SoPDF.Objects;
 
 namespace SoPDF.Core
 {
@@ -18,6 +19,12 @@ namespace SoPDF.Core
         {
             Header = new Header();
             Trailer = new Trailer();
+        }
+
+        public void CreatePage()
+        {
+            DocumentCatalog documentCatalog = ObjectWarehouse.GetWareHouse()[0] as DocumentCatalog;
+            documentCatalog.CreatePage();
         }
 
         public byte[] ToBytes(bool isReference = false)
