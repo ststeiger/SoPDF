@@ -32,6 +32,7 @@ namespace SoPDF.Core
             List<byte> output = new List<byte>();
 
             output.AddRange(Header.ToBytes().ToList());
+            //output.AddRange(ObjectWarehouse.GetWareHouse().ToBytes().ToList());
             output.AddRange(Trailer.ToBytes().ToList());
 
             return output.ToArray();

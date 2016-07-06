@@ -39,4 +39,12 @@ namespace SoPDF.Objects
             return output.ToArray();
         }
     }
+
+    internal static class ListExtension
+    {
+        internal static byte[] ToBytes(this List<PdfObject> objects)
+        {
+
+        }
+    }
 }
